@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const options = {
   weather: [
     { id: 1, description: "晴れ" },
@@ -41,25 +40,6 @@ const options = {
     { id: 3, description: "磯" },
     { id: 4, description: "河川" },
     { id: 5, description: "湖" },
-=======
-import { Options } from "../types";
-
-const options: Options = {
-  weather: [
-    { id: 1, label: "晴れ" },
-    { id: 2, label: "曇り" },
-    { id: 3, label: "雨" },
-  ],
-  clarity: [
-    { id: 1, label: "澄んでいる" },
-    { id: 2, label: "やや濁っている" },
-    { id: 3, label: "濁っている" },
-  ],
-  bait: [
-    { id: 1, label: "小魚" },
-    { id: 2, label: "エビ" },
-    { id: 3, label: "カニ" },
->>>>>>> b3525221641c727ae36b993334a4800829568f3c
   ],
 };
 
