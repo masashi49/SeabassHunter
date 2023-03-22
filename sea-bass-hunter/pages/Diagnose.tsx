@@ -14,7 +14,7 @@ const OptionSelect = ({
   setSelectedOptions: (value: Record<OptionId, number>) => void;
 }) => (
   <div>
-    <h3>{optionGroup.title}</h3>
+    <h2>{optionGroup.id}</h2>
     <select
       value={selectedOptions[optionGroup.id]}
       onChange={(e) => {
@@ -52,10 +52,17 @@ const App = () => {
     alert(`最適なルアーは ${String(result)} です！`);
   };
 
+  const optionGroups: OptionGroup = Object.entries(options).map(
+    ([id, options]) => ({
+      id: id as OptionId,
+      options: options as Option[],
+    })
+  );
+
   return (
     <div>
       <h1>釣りルアー診断</h1>
-      {options.map((optionGroup: OptionGroup) => (
+      {optionGroups.map((optionGroup: OptionGroup) => (
         <OptionSelect
           key={optionGroup.id}
           optionGroup={optionGroup}

@@ -1,13 +1,11 @@
 // types.ts
 export type Option = {
   id: number;
-  text: string;
-  description: string;
+  description?: string;
 };
 
 export type Question = {
   id: string;
-  text: string;
   options: Option[];
 };
 
@@ -24,9 +22,7 @@ export type LurePoints = {
 };
 
 export type OptionGroup = {
-  title: string;
   id: number;
-  description: string;
   options: {
     [key: string]: Option[];
   };

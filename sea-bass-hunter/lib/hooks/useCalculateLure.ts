@@ -1,7 +1,8 @@
 import { pointData } from "../../api/pointData";
+import { SelectedOptions } from "../../pages/types";
 
 type Lure = keyof typeof pointData;
-export type OptionId = keyof typeof pointData.ストレートミノー;
+export type OptionId = keyof SelectedOptions;
 
 const useCalculateLure = (
   lure: Lure,
@@ -19,7 +20,7 @@ const useCalculateLure = (
 export const calculateLure = (
   selectedOptions: Record<OptionId, number>
 ): Lure => {
-  let bestLure: Lure = "ミノー";
+  let bestLure: Lure = "ストレートミノー";
   let maxPoints = -1;
 
   for (const lure in pointData) {
