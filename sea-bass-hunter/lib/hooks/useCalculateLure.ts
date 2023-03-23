@@ -1,8 +1,14 @@
-import { pointData } from "../../api/pointData";
+import { pointData as rawData } from "../../api/pointData";
 import { SelectedOptions } from "../../pages/types";
 
-type Lure = keyof typeof pointData;
+type Lure = keyof typeof rawData;
 export type OptionId = keyof SelectedOptions;
+
+export type PointData = {
+  [key in OptionId]: {
+    [pointId: number]: number;
+  };
+};
 
 const useCalculateLure = (
   lure: Lure,
@@ -23,7 +29,7 @@ export const calculateLure = (
   let bestLure: Lure = "ストレートミノー";
   let maxPoints = -1;
 
-  for (const lure in pointData) {
+  for (const lure in rawData) {
     const lurePoints = useCalculateLure(lure as Lure, selectedOptions);
 
     if (lurePoints > maxPoints) {
@@ -34,3 +40,5 @@ export const calculateLure = (
 
   return bestLure;
 };
+
+const pointData: Record<Lure, PointData> = rawData;

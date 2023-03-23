@@ -22,8 +22,6 @@ export type LurePoints = {
 };
 
 export type OptionGroup = {
-  id: number;
-  options: {
-    [key: string]: Option[];
-  };
+  id: string;
+  options: Option[];
 };

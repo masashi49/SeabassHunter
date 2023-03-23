@@ -12,26 +12,30 @@ const OptionSelect = ({
   optionGroup: OptionGroup;
   selectedOptions: Record<OptionId, number>;
   setSelectedOptions: (value: Record<OptionId, number>) => void;
-}) => (
-  <div>
-    <h2>{optionGroup.id}</h2>
-    <select
-      value={selectedOptions[optionGroup.id]}
-      onChange={(e) => {
-        setSelectedOptions({
-          ...selectedOptions,
-          [optionGroup.id]: parseInt(e.target.value),
-        });
-      }}
-    >
-      {optionGroup.options.map((option: Option) => (
-        <option key={option.id} value={option.id}>
-          {option.description}
-        </option>
-      ))}
-    </select>
-  </div>
-);
+}) => {
+  const options = optionGroup.options;
+
+  return (
+    <div>
+      <h2>{optionGroup.id}</h2>
+      <select
+        value={selectedOptions[optionGroup.id]}
+        onChange={(e) => {
+          setSelectedOptions({
+            ...selectedOptions,
+            [optionGroup.id]: parseInt(e.target.value),
+          });
+        }}
+      >
+        {options.map((option: Option) => (
+          <option key={option.id} value={option.id}>
+            {option.description}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
 
 const App = () => {
   // ユーザーが選択したオプションを保持
@@ -52,9 +56,9 @@ const App = () => {
     alert(`最適なルアーは ${String(result)} です！`);
   };
 
-  const optionGroups: OptionGroup = Object.entries(options).map(
+  const optionGroups: OptionGroup[] = Object.entries(options).map(
     ([id, options]) => ({
-      id: id as OptionId,
+      id: id as string,
       options: options as Option[],
     })
   );
