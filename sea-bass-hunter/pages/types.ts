@@ -13,12 +13,10 @@ export type SelectedOptions = {
   [key: string]: number;
 };
 
-export type Point = {
-  [key: string]: number;
-};
-
 export type LurePoints = {
-  [key: string]: Point;
+  [key: string]: {
+    [key: string]: number;
+  };
 };
 
 export type OptionGroup = {

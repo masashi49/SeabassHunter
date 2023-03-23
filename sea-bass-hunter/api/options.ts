@@ -1,4 +1,4 @@
-const options = {
+export const options = {
   weather: [
     { id: 1, description: "晴れ" },
     { id: 2, description: "曇り" },
@@ -42,5 +42,3 @@ const options = {
     { id: 5, description: "湖" },
   ],
 };
-
-export default options;

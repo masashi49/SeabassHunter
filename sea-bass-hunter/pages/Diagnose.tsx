@@ -1,5 +1,5 @@
 import { useState } from "react";
-import options from "../api/options";
+import { options } from "../api/options";
 import { calculateLure, OptionId } from "../lib/hooks/useCalculateLure";
 import type { Option, OptionGroup } from "./types";
 
