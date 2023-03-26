@@ -1,3 +1,23 @@
+export const sizeData = {
+  小: { 1: 2, 2: 3, 3: 1, 4: 1, 5: 0 },
+  中: { 1: 3, 2: 1, 3: 2, 4: 1, 5: 0 },
+  大: { 1: 1, 2: 2, 3: 3, 4: 1, 5: 0 },
+} as const;
+
+// colorData.ts
+export const colorData = {
+  イエロー: { 1: 2, 2: 3, 3: 1, 4: 1, 5: 0 },
+  グリーン: { 1: 3, 2: 1, 3: 2, 4: 1, 5: 0 },
+  ブルー: { 1: 1, 2: 2, 3: 3, 4: 1, 5: 0 },
+} as const;
+
+// actionData.ts
+export const actionData = {
+  水面: { 1: 2, 2: 3, 3: 1, 4: 1, 5: 0 },
+  中層: { 1: 3, 2: 1, 3: 2, 4: 1, 5: 0 },
+  底層: { 1: 1, 2: 2, 3: 3, 4: 1, 5: 0 },
+} as const;
+
 export const pointData = {
   ストレートミノー: {
     size: "中",
