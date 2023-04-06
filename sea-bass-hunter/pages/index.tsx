@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Diagnose from "./Diagnose";
+import { Diagnose2 } from "./Diagnose2";
 
 const Home: NextPage = () => {
   return (
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <Diagnose />
+        <Diagnose2 />
       </main>
 
       <footer className={styles.footer}>
