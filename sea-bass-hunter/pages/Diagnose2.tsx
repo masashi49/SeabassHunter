@@ -4,24 +4,19 @@ import { pointData, sizeData, colorData, actionData } from "../api/pointData";
 
 type rule = keyof typeof pointData;
 type Situation = {
-  weather: number;
-  clarity: number;
-  bait: number;
-  time: number;
-  season: number;
-  location: number;
+  [key: string]: number;
 };
 
-function calculateScore(lureData: any, situation: Situation): number {
-  let score = 0;
-  for (const key in situation) {
-    if (Object.prototype.hasOwnProperty.call(lureData, key)) {
-      const point = lureData[key][situation[key]];
-      score += point;
-    }
-  }
-  return score;
-}
+// function calculateScore(lureData: any, situation: Situation): number {
+//   let score = 0;
+//   for (const key in situation) {
+//     if (Object.prototype.hasOwnProperty.call(lureData, key)) {
+//       const point = lureData[key][situation[key]];
+//       score += point;
+//     }
+//   }
+//   return score;
+// }
 
 function generateLureCombination(): { [key: string]: any } {
   const lureCombination: { [key: string]: any } = {};
@@ -55,30 +50,26 @@ function generateLureCombination(): { [key: string]: any } {
   return lureCombination;
 }
 
-const lureCombinationData = generateLureCombination();
+//const lureCombinationData = generateLureCombination();
 
-function recommendLure(situation: Situation): string {
-  let maxScore = -Infinity;
-  let bestLure = "";
+// function recommendLure(situation: Situation): string {
+//   let maxScore = -Infinity;
+//   let bestLure = "";
 
-  for (const lureName in lureCombinationData) {
-    if (Object.prototype.hasOwnProperty.call(lureCombinationData, lureName)) {
-      const lureData: rule = lureCombinationData[lureName];
-      const score = calculateScore(lureData, situation);
+//   for (const lureName in lureCombinationData) {
+//     if (Object.prototype.hasOwnProperty.call(lureCombinationData, lureName)) {
+//       const lureData: rule = lureCombinationData[lureName];
+//       const score = calculateScore(lureData, situation);
 
-      if (score > maxScore) {
-        maxScore = score;
-        bestLure = lureName;
-      }
-    }
-  }
+//       if (score > maxScore) {
+//         maxScore = score;
+//         bestLure = lureName;
+//       }
+//     }
+//   }
 
-  return bestLure;
-}
-
-const Diagnose2 = () => {
-  return <div>{recommendedLure3}</div>;
-};
+//   return bestLure;
+// }
 
 const App = () => {
   const [selectedWeather, setSelectedWeather] = useState(1);
@@ -88,7 +79,7 @@ const App = () => {
   const [selectedSeason, setSelectedSeason] = useState(1);
   const [selectedLocation, setSelectedLocation] = useState(1);
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     const { name, value } = event.target;
     switch (name) {
       case "weather":
@@ -116,7 +107,7 @@ const App = () => {
 
   const calculatePoints = () => {
     // 各ルアーのポイントを計算
-    const points = {};
+    const points: Situation = {};
     for (const lure in pointData) {
       points[lure] =
         pointData[lure].weather[selectedWeather] +
@@ -128,6 +119,7 @@ const App = () => {
     }
     return points;
   };
+
   const getBestLure = () => {
     const points = calculatePoints();
     let bestLure = "";
@@ -140,8 +132,8 @@ const App = () => {
       }
     }
 
-    const getBestAttribute = (attributeData, attribute) => {
-      return Object.entries(attributeData).reduce((a, b) => {
+    const getBestAttribute = (attributeData: any, attribute: any) => {
+      return Object.entries(attributeData).reduce((a: any, b: any) => {
         const aValue = a[1][attribute];
         const bValue = b[1][attribute];
         return aValue > bValue ? a : b;
@@ -160,7 +152,7 @@ const App = () => {
     };
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
     const bestLure = getBestLure();
     alert(

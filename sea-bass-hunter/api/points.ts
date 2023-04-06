@@ -1,6 +1,6 @@
 import { Points } from "../types";
 
-const point: Points = {
+const point: any = {
   lureA: {
     weather: { "1": 2, "2": 1, "3": 0 },
     clarity: { "1": 2, "2": 1, "3": 1 },
